@@ -2,8 +2,6 @@ import React from "react";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { motion } from "motion/react";
-import dotenv from "dotenv";
-dotenv.config();
 
 const Contact = () => {
   const [result, setResult] = useState("");
@@ -12,7 +10,7 @@ const Contact = () => {
     event.preventDefault();
     setResult("Sending...");
     const formData = new FormData(event.target);
-    formData.append("access_key", process.env.WEB3_FORMS_API_KEY);
+    formData.append("access_key", import.meta.env.VITE_WEB3_FORMS_API_KEY);
 
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
